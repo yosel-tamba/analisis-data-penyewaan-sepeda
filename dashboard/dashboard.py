@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-file_path = "all_data.csv"
+file_path = "https://github.com/yosel-tamba/analisis-data-penyewaan-sepeda/blob/5afb55d41fc2e0967ee41ab07f22371175a2554d/dashboard/all_data.csv"
 df = pd.read_csv(file_path)
 
 df["dteday"] = pd.to_datetime(df["dteday"])
