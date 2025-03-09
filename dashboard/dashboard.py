@@ -4,8 +4,7 @@ import seaborn as sns
 import streamlit as st
 
 file_path = "/mount/src/analisis-data-penyewaan-sepeda/dashboard/all_data.csv"
-df = pd.read_csv(file_path, on_bad_lines='skip', low_memory=False)
-df.rename(columns={"Dteday": "dteday"}, inplace=True)
+df = pd.read_csv(file_path)
 
 df["dteday"] = pd.to_datetime(df["dteday"])
 
