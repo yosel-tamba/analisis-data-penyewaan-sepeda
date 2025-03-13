@@ -4,19 +4,25 @@ import matplotlib.pyplot as plt
 
 # Load dataset
 df = pd.read_csv("/mount/src/analisis-data-penyewaan-sepeda/dashboard/all_data.csv")
+# df = pd.read_csv("all_data.csv")
 
-# Convert date column to datetime
+# ubah format tanggal ke datetime
 df['dteday'] = pd.to_datetime(df['dteday'])
 
 # Sidebar Filters
 st.sidebar.header("Filter")
 date_range = st.sidebar.date_input("Pilih Rentang Tanggal", [df['dteday'].min(), df['dteday'].max()])
 
-# Filter data based on selection
+# Filter data berdasarkan tanggal
 filtered_df = df[(df['dteday'] >= pd.to_datetime(date_range[0])) & (df['dteday'] <= pd.to_datetime(date_range[1]))]
 
 # Navigation Header
 st.markdown("# Dashboard Analisis Penyewaan Sepeda")
+
+# Total sepeda yang dirental berdasarkan tanggal
+st.markdown(f"#### Total Penyewaan Sepeda: {filtered_df['cnt_daily'].sum()}")
+
+# Tab navigasi
 tabs = st.tabs(["Cuaca vs. Penyewaan Sepeda", "Hari Kerja vs Akhir Pekan"])
 
 with tabs[0]:
