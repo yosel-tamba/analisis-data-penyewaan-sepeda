@@ -3,17 +3,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load dataset
-all_df = pd.read_csv("/mount/src/analisis-data-penyewaan-sepeda/dashboard/all_data.csv")
+df = pd.read_csv("/mount/src/analisis-data-penyewaan-sepeda/dashboard/all_data.csv")
 
 # Convert date column to datetime
-all_df['dteday'] = pd.to_datetime(all_df['dteday'])
+df['dteday'] = pd.to_datetime(df['dteday'])
 
 # Sidebar Filters
 st.sidebar.header("Filter")
-date_range = st.sidebar.date_input("Pilih Rentang Tanggal", [all_df['dteday'].min(), all_df['dteday'].max()])
+date_range = st.sidebar.date_input("Pilih Rentang Tanggal", [df['dteday'].min(), df['dteday'].max()])
 
 # Filter data based on selection
-filtered_df = all_df[(all_df['dteday'] >= pd.to_datetime(date_range[0])) & (all_df['dteday'] <= pd.to_datetime(date_range[1]))]
+filtered_df = df[(df['dteday'] >= pd.to_datetime(date_range[0])) & (df['dteday'] <= pd.to_datetime(date_range[1]))]
 
 # Navigation Header
 st.markdown("# Dashboard Analisis Penyewaan Sepeda")
