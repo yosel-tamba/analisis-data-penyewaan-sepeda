@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load dataset
-all_df = pd.read_csv("all_data.csv")
+all_df = pd.read_csv("/mount/src/analisis-data-penyewaan-sepeda/dashboard/all_data.csv")
 
 # Convert date column to datetime
 all_df['dteday'] = pd.to_datetime(all_df['dteday'])
